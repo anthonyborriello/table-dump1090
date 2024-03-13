@@ -19,8 +19,8 @@ This project displays ADS-B flight data from the Dump1090 server in a dynamic HT
 If you are using lighttpd:  
 ```
 sudo apt install php php-fpm php-cgi php-curl
-sudo lighttpd-enable-mod fastcgi-php
-sudo systemctl restart lighttpd​
+sudo lighty-enable-mod fastcgi-php-fpm  
+sudo service lighttpd force-reload
 ```
 ## Customization
 
