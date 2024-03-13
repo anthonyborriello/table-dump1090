@@ -22,12 +22,9 @@ To specify the desired location for displaying flight data, you can modify the `
 
 1. Open the `radar_table.php` file in a text editor.
 2. Locate the following lines of code:
-
-    ```php
- $reference_point = array(41.9028, 12.4964);
-    ```
-
-3. Replace the values with your Latitude and Longitude $reference_point = array(41.9028, 12.4964);
+`$reference_point = array(41.9028, 12.4964);`
+3. Replace the values with your Latitude and Longitude:  
+example for Rome: `41.9028, 12.4964`
 4. Save the changes and close the file.
 5. Reload the `radar_table.php` page in your web browser to see the updated flight data for the new location.
 
