@@ -17,9 +17,7 @@ git clone https://github.com/anthonyborriello/table-dump1090
 ```
 3. Configure the Dump1090 server to provide the data.
 4. Insert the `radar_table.php` page into your web service folder (usually `/var/www/html/`).
-5. In the `radar_table.php` file, customize the URL in the `$response` variable to match your Dump1090 server setup  
-(e.g., `'http://yourserveraddress:8080/data/aircraft.json'`)
-6. You should install PHP in your web server and enable it.    
+5. You should install PHP in your web server and enable it.    
 If you are using lighttpd:  
 ```
 sudo apt install php php-fpm php-cgi
@@ -28,9 +26,8 @@ sudo service lighttpd force-reload
 ```
 ## Customization
 
-To specify the desired location for displaying flight data, you can modify the `radar_table.php` file. Follow these steps:
-
-1. Open the `radar_table.php` file in a text editor.
+1. In the `radar_table.php` file, customize the URL in the `$response` variable to match your Dump1090 server setup  
+(e.g., `'http://yourserveraddress:8080/data/aircraft.json'`)
 2. Locate the following lines of code:
 `$reference_point = array(41.9028, 12.4964);`
 3. Replace the values with your Latitude and Longitude:  
