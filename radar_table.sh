@@ -3,13 +3,6 @@
 # Pulisci la schermata
 clear
 
-# Verifica se i pacchetti PHP sono installati
-if ! dpkg -l | grep -q '^ii.*php[0-9].[0-9]-fpm.*' && ! dpkg -l | grep -q '^ii.*php[0-9].[0-9]-cgi.*'; then
-    echo "Error: PHP packages are not installed."
-    echo "Please install PHP and the required packages first in order to use this script. Check https://github.com/anthonyborriello/table-dump1090/"
-    exit 1
-fi
-
 # Funzione per chiedere all'utente se dump1090 è installato
 ask_dump1090() {
     read -p "Have you installed dump1090? (y/n): " dump1090_installed
@@ -29,6 +22,22 @@ ask_dump1090() {
         exit 1
     fi
 }
+
+# Chiedi all'utente se dump1090 è installato
+ask_dump1090
+
+# Pulisci la schermata
+clear
+
+# Verifica se i pacchetti PHP sono installati
+if ! dpkg -l | grep -q '^ii.*php[0-9].[0-9]-fpm.*' && ! dpkg -l | grep -q '^ii.*php[0-9].[0-9]-cgi.*'; then
+    echo "Error: PHP packages are not installed."
+    echo "Installing PHP and the required packages..."
+    sudo apt-get update
+    sudo apt-get install php php-fpm php-cgi
+    sudo lighttpd-enable-mod fastcgi-php
+    sudo service lighttpd force-reload
+fi
 
 # Funzione per chiedere all'utente di inserire le coordinate
 ask_coordinates() {
@@ -54,9 +63,6 @@ echo "Welcome to the setup script for Table Dump1090."
 echo "An idea of Antonio Borriello (https://github.com/anthonyborriello)"
 echo "This script will guide you through the customization process."
 echo
-
-# Chiedi all'utente se dump1090 è installato
-ask_dump1090
 
 # Chiedi all'utente di inserire le coordinate
 echo "Please provide the latitude and longitude of your station."
