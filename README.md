@@ -18,7 +18,7 @@ This project displays ADS-B flight data from the Dump1090 server in a dynamic HT
 5. You should install PHP in your web server and enable it.    
 If you are using lighttpd:  
 ```
-sudo apt install php php-fpm php-cgi php-curl
+sudo apt install php php-fpm php-cgi
 sudo lighty-enable-mod fastcgi-php-fpm  
 sudo service lighttpd force-reload
 ```
