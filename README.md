@@ -16,6 +16,22 @@ This project displays ADS-B flight data from the Dump1090 server in a dynamic HT
 4. In the `radar_table.php` file, customize the URL in the `$response` variable to match your Dump1090 server setup  
 (e.g., `'http://yourserveraddress:8080/data/aircraft.json'`)
 
+## Customization
+
+To specify the desired location for displaying flight data, you can modify the `radar_table.php` file. Follow these steps:
+
+1. Open the `radar_table.php` file in a text editor.
+2. Locate the following lines of code:
+
+    ```php
+ $reference_point = array(41.9028, 12.4964);
+    ```
+
+3. Replace the values with your Latitude and Longitude $reference_point = array(41.9028, 12.4964);
+4. Save the changes and close the file.
+5. Reload the `radar_table.php` page in your web browser to see the updated flight data for the new location.
+
+
 ## Usage
 
 1. Open the `radar_table.php` file in a web browser.
