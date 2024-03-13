@@ -6,7 +6,7 @@ clear
 # Verifica se i pacchetti PHP sono installati
 if ! dpkg -l | grep -q '^ii.*php[0-9].[0-9]-fpm.*' && ! dpkg -l | grep -q '^ii.*php[0-9].[0-9]-cgi.*'; then
     echo "Error: PHP packages are not installed."
-    echo "Please install PHP and the required packages first in order to use this script."
+    echo "Please install PHP and the required packages first in order to use this script. Check https://github.com/anthonyborriello/table-dump1090/"
     exit 1
 fi
 
