@@ -3,6 +3,26 @@
 # Pulisci la schermata
 clear
 
+# Funzione per controllare se un pacchetto è installato
+check_package_installed() {
+    dpkg-query -W -f='${Status}' $1 2>/dev/null | grep -c "ok installed"
+}
+
+# Verifica se i pacchetti PHP sono installati
+if [ $(check_package_installed "php") -eq 0 ] || [ $(check_package_installed "php-fpm") -eq 0 ] || [ $(check_package_installed "php-cgi") -eq 0 ]; then
+    echo "PHP packages are not installed. Installing PHP and the required packages..."
+    sudo apt-get update
+    sudo apt-get install -y php php-fpm php-cgi
+fi
+
+# Verifica se Lighttpd è installato
+if [ $(check_package_installed "lighttpd") -eq 0 ]; then
+    echo "Lighttpd is not installed. Installing Lighttpd..."
+    sudo apt-get install -y lighttpd
+    sudo lighty-enable-mod fastcgi-php
+    sudo service lighttpd force-reload
+fi
+
 # Funzione per chiedere all'utente se dump1090 è installato
 ask_dump1090() {
     read -p "Have you installed dump1090? (y/n): " dump1090_installed
@@ -28,16 +48,6 @@ ask_dump1090
 
 # Pulisci la schermata
 clear
-
-# Verifica se i pacchetti PHP sono installati
-if ! dpkg -l | grep -q '^ii.*php[0-9].[0-9]-fpm.*' && ! dpkg -l | grep -q '^ii.*php[0-9].[0-9]-cgi.*'; then
-    echo "Error: PHP packages are not installed."
-    echo "Installing PHP and the required packages..."
-    sudo apt-get update
-    sudo apt-get install php php-fpm php-cgi
-    sudo lighttpd-enable-mod fastcgi-php
-    sudo service lighttpd force-reload
-fi
 
 # Funzione per chiedere all'utente di inserire le coordinate
 ask_coordinates() {
