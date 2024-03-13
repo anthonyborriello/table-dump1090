@@ -19,9 +19,15 @@ fi
 if [ $(check_package_installed "lighttpd") -eq 0 ]; then
     echo "Lighttpd is not installed. Installing Lighttpd..."
     sudo apt-get install -y lighttpd
-    sudo lighty-enable-mod fastcgi-php
-    sudo service lighttpd force-reload
 fi
+
+# Abilita il modulo fastcgi-php in Lighttpd
+echo "Enabling fastcgi-php module in Lighttpd..."
+sudo lighty-enable-mod fastcgi-php
+
+# Forza il reload di Lighttpd per applicare le modifiche
+echo "Reloading Lighttpd service..."
+sudo service lighttpd force-reload
 
 # Funzione per chiedere all'utente se dump1090 è installato
 ask_dump1090() {
