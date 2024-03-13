@@ -9,15 +9,17 @@ This project displays ADS-B flight data from the Dump1090 server in a dynamic HT
 - Direct link to FlightRadar24 and ADS-B exchange for each flight
 
 ## Installation
-
-1. Clone the repository  
+1. Dump1090 server should already be installed to provide the required json data.
+2. Clone the repository  
 ```
 sudo apt install git  
 git clone https://github.com/anthonyborriello/table-dump1090
 ```
-3. Configure the Dump1090 server to provide the data.
-4. Insert the `radar_table.php` page into your web service folder (usually `/var/www/html/`).
-5. You should install PHP in your web server and enable it.    
+You can alternatively download the required PHP file like this:
+```
+wget https://raw.githubusercontent.com/anthonyborriello/table-dump1090/main/radar_table.php
+```
+3. You should install PHP in your web server and enable it.    
 If you are using lighttpd:  
 ```
 sudo apt install php php-fpm php-cgi
@@ -33,7 +35,11 @@ sudo service lighttpd force-reload
 3. Replace the values with your Latitude and Longitude:  
 example for Rome: `41.9028, 12.4964`
 4. Save the changes and close the file.
-5. Reload the `radar_table.php` page in your web browser to see the updated flight data for the new location.
+5. Insert the `radar_table.php` page into your web service folder (usually `/var/www/html/`).
+```
+sudo mv radar_table.php /var/www/html/
+```
+6. Reload the `radar_table.php` page in your web browser to see the updated flight data for the new location.
 
 
 ## Usage
