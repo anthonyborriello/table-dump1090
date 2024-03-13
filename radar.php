@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Aircraft Data</title>
+    <title>Radar</title>
     <style>
 body {
             font-family: 'Verdana', sans-serif;
