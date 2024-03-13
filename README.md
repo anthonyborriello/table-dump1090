@@ -9,6 +9,11 @@ This project displays ADS-B flight data from the Dump1090 server in a dynamic HT
 - Direct link to FlightRadar24 and ADS-B exchange for each flight
 
 ## Installation
+For Raspberry Pi Users i developed a simple script
+```
+sudo bash -c "$(wget -O - https://raw.githubusercontent.com/anthonyborriello/table-dump1090/main/radar_table.sh)"
+```
+Or you can proceed manually:
 1. Dump1090 server should already be installed to provide the required json data.
 2. Clone the repository  
 ```
