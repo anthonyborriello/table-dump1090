@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Radar</title>
+    <title>Radar Table</title>
     <style>
-body {
+        body {
             font-family: 'Verdana', sans-serif;
             padding-top: 20px;
             background-color: #000;
