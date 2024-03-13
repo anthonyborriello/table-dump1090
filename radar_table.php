@@ -1,3 +1,6 @@
+<!-- Copyright © 2024 Anthony Borriello - antonioborriello.wordpress.com -->
+<!-- GitHub: https://github.com/anthonyborriello -->
+
 <!DOCTYPE html>
 <html>
 <head>
