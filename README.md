@@ -15,7 +15,13 @@ This project displays ADS-B flight data from the Dump1090 server in a dynamic HT
 3. Insert the `radar_table.php` page into your web service folder (usually `/var/www/html/`).
 4. In the `radar_table.php` file, customize the URL in the `$response` variable to match your Dump1090 server setup  
 (e.g., `'http://yourserveraddress:8080/data/aircraft.json'`)
-
+5. You should install PHP in your web server and enable it.    
+If you are using lighttpd:  
+```
+sudo apt install php8.2 php8.2-fpm php8.2-cgi php8.2-curl
+sudo lighttpd-enable-mod fastcgi-php
+sudo systemctl restart lighttpd​
+```
 ## Customization
 
 To specify the desired location for displaying flight data, you can modify the `radar_table.php` file. Follow these steps:
