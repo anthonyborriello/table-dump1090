@@ -128,7 +128,7 @@ $response = file_get_contents('http://raspberrypi:8080/data/aircraft.json');
 if ($response) {
     $data = json_decode($response, true);
     $aircrafts = $data['aircraft'] ?? [];
-    $reference_point = array(40.7934, 14.3686);
+    $reference_point = array(41.9028, 12.4964);
     $aircraft_distances = [];
 
     foreach ($aircrafts as $aircraft) {
