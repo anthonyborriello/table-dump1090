@@ -61,7 +61,7 @@ ask_coordinates() {
     read -p "Enter longitude (e.g., 12.4964): " longitude
 
     # Check if the entered coordinates have the correct format
-    if [[ ! "$latitude" =~ ^[0-9]+(\.[0-9]{1,4})?$ || ! "$longitude" =~ ^[0-9]+(\.[0-9]{1,4})?$ ]]; then
+    if [[ ! "$latitude" =~ ^-?[0-9]+(\.[0-9]{1,4})?$ || ! "$longitude" =~ ^-?[0-9]+(\.[0-9]{1,4})?$ ]]; then
         echo "Please enter valid coordinates."
         ask_coordinates
     fi
