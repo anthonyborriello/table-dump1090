@@ -8,16 +8,10 @@ check_package_installed() {
     dpkg-query -W -f='${Status}' $1 2>/dev/null | grep -c "ok installed"
 }
 
-# Check if PHP packages are installed
-if [ $(check_package_installed "php") -eq 0 ] || [ $(check_package_installed "php-fpm") -eq 0 ] || [ $(check_package_installed "php-cgi") -eq 0 ]; then
-    echo "PHP packages are not installed. Installing PHP and the required packages..."
-    sudo apt-get update
-    sudo apt-get install -y php php-fpm php-cgi
-fi
-
 # Check if Lighttpd is installed
 if [ $(check_package_installed "lighttpd") -eq 0 ]; then
     echo "Lighttpd is not installed. Installing Lighttpd..."
+    sudo apt-get update
     sudo apt-get install -y lighttpd
 fi
 
@@ -28,6 +22,13 @@ sudo lighty-enable-mod fastcgi-php
 # Force reload Lighttpd to apply changes
 echo "Reloading Lighttpd service..."
 sudo service lighttpd force-reload
+
+# Check if PHP packages are installed
+if [ $(check_package_installed "php") -eq 0 ] || [ $(check_package_installed "php-fpm") -eq 0 ] || [ $(check_package_installed "php-cgi") -eq 0 ]; then
+    echo "PHP packages are not installed. Installing PHP and the required packages..."
+    sudo apt-get update
+    sudo apt-get install -y php php-fpm php-cgi
+fi
 
 # Function to ask the user if dump1090 is installed
 ask_dump1090() {
