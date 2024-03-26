@@ -15,6 +15,13 @@ if [ $(check_package_installed "lighttpd") -eq 0 ]; then
     sudo apt-get install -y lighttpd
 fi
 
+# Check if PHP packages are installed
+if [ $(check_package_installed "php") -eq 0 ] || [ $(check_package_installed "php-fpm") -eq 0 ] || [ $(check_package_installed "php-cgi") -eq 0 ]; then
+    echo "PHP packages are not installed. Installing PHP and the required packages..."
+    sudo apt-get update
+    sudo apt-get install -y php php-fpm php-cgi
+fi
+
 # Enable the fastcgi-php module in Lighttpd
 echo "Enabling fastcgi-php module in Lighttpd..."
 sudo lighty-enable-mod fastcgi-php
@@ -22,13 +29,6 @@ sudo lighty-enable-mod fastcgi-php
 # Force reload Lighttpd to apply changes
 echo "Reloading Lighttpd service..."
 sudo service lighttpd force-reload
-
-# Check if PHP packages are installed
-if [ $(check_package_installed "php") -eq 0 ] || [ $(check_package_installed "php-fpm") -eq 0 ] || [ $(check_package_installed "php-cgi") -eq 0 ]; then
-    echo "PHP packages are not installed. Installing PHP and the required packages..."
-    sudo apt-get update
-    sudo apt-get install -y php php-fpm php-cgi
-fi
 
 # Function to ask the user if dump1090 is installed
 ask_dump1090() {
@@ -107,5 +107,4 @@ sed -i "s#http://raspberrypi:8080/data/aircraft.json#http://$server_name:8080/da
 sudo mv ~/radar_table.php /var/www/html
 
 # Show a setup completed message with a final colored link
-echo "Setup completed successfully."
-echo -e "You can now visit the page at: \e[32mhttp://$server_name/radar_table.php\e[0m"
+echo "Setup completed successfully
