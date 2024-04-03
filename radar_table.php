@@ -82,6 +82,11 @@
             content: "";
             color: #fff;
         }
+
+        /* Custom status background color */
+        .na-status {
+            background-color: #666;
+        }
     </style>
     <meta http-equiv="refresh" content="5">
 </head>
@@ -143,7 +148,7 @@ if ($response) {
             // If coordinates are missing, checks if the 'category' field is present
             $status = isset($aircraft['category']) && !empty($aircraft['category']) ? "ADS-B" : "N/A";
         }
-        
+
         // Limit the number of decimal places to 2 if it's a number
         if (is_numeric($distance)) {
             $formatted_distance = number_format($distance, 2);
@@ -179,11 +184,25 @@ if ($response) {
         echo "<td>{$aircraft_data['squawk']}</td>";
         echo "<td>{$aircraft_data['altitude']}</td>";
         echo "<td>{$aircraft_data['ground_speed']}</td>";
-        echo "<td>{$aircraft_data['distance']}</td>";
+        // Replace 'N/A' with an empty string if it's 'N/A'
+        $distance_display = $aircraft_data['distance'] == 'N/A' ? '' : $aircraft_data['distance'];
+        echo "<td>{$distance_display}</td>";
         echo "<td>{$aircraft_data['heading']}</td>";
         echo "<td>{$aircraft_data['latitude']}</td>";
         echo "<td>{$aircraft_data['longitude']}</td>";
-        echo "<td><span class='flight-status " . strtolower($aircraft_data['status']) . "'>{$aircraft_data['status']}</span></td>";
+        echo "<td><span class='flight-status " . strtolower($aircraft_data['status']);
+        // Add the 'na-status' class if status is 'N/A'
+        if ($aircraft_data['status'] == 'N/A') {
+            echo " na-status";
+        }
+        echo "'>";
+        // If status is 'N/A', print custom text instead of 'N/A'
+        if ($aircraft_data['status'] == 'N/A') {
+            echo "ADS-B";
+        } else {
+            echo $aircraft_data['status'];
+        }
+        echo "</span></td>";
         echo "</tr>";
     }
 } else {
@@ -196,3 +215,4 @@ if ($response) {
 
 </body>
 </html>
+
