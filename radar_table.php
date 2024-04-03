@@ -59,7 +59,7 @@
             color: #fff;
         }
 
-        .adsb {
+        .ads-b {
             background-color: #1a8cff;
         }
 
@@ -138,10 +138,10 @@ if ($response) {
 
         // Checks if the coordinates are present and sets the $status variable
         if ($aircraft_lat != 0 && $aircraft_lon != 0) {
-            $status = "ADSB";
+            $status = "ADS-B";
         } else {
             // If coordinates are missing, checks if the 'category' field is present
-            $status = isset($aircraft['category']) && !empty($aircraft['category']) ? "ADSB" : "N/A";
+            $status = isset($aircraft['category']) && !empty($aircraft['category']) ? "ADS-B" : "N/A";
         }
         
         // Limit the number of decimal places to 2 if it's a number
