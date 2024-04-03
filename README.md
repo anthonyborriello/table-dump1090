@@ -72,5 +72,6 @@ If you would like to contribute to this project, follow these steps:
 
 This project is licensed under the [MIT License](LICENSE).
 
-![IMG_4980](https://github.com/anthonyborriello/table-dump1090/assets/57049017/eb5fb30d-0b47-4d09-999c-75135bdbd406)
+![Radar_Table](https://github.com/anthonyborriello/table-dump1090/assets/57049017/73215194-b685-4642-8a65-ffa1bf935cee)
+
 
