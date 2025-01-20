@@ -50,7 +50,7 @@ sudo mv radar_table.php /var/www/html/
 
 ## Usage
 
-1. Open the `radar_table.php` file in a web browser. (Usually http://raspberrypi:8080/data/radar_table.php)
+1. Open the `radar_table.php` file in a web browser. (Usually http://raspberrypi/radar_table.php)
 2. Check the displayed flight data.
 3. Click on flight links for further information.
 
