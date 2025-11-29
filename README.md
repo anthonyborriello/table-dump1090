@@ -66,7 +66,7 @@ If you would like to contribute to this project, follow these steps:
 
 ## Author
 
-🇮🇹   Antonio Borriello - [Website](https://antonioborriello.wordpress.com)
+Antonio Borriello - [Website](https://antonioborriello.wordpress.com)
 
 ## License
 
