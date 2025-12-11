@@ -65,6 +65,7 @@ If you would like to contribute to this project, follow these steps:
 5. Open a Pull Request.
 
 ## Author
+
 Antonio Borriello [antonioborriello.wordpress.com](https://antonioborriello.wordpress.com)
 
 ## License
