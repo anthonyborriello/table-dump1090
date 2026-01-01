@@ -28,7 +28,7 @@ wget https://raw.githubusercontent.com/anthonyborriello/table-dump1090/main/rada
 3. You should install PHP in your web server and enable it.    
 If you are using lighttpd:  
 ```
-sudo apt install php8.2 php8.2-fpm php8.2-cgi
+sudo apt install php php-fpm php-cgi
 sudo lighty-enable-mod fastcgi-php-fpm  
 sudo service lighttpd force-reload
 ```
