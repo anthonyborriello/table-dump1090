@@ -107,4 +107,4 @@ sed -i "s#http://raspberrypi:8080/data/aircraft.json#http://$server_name:8080/da
 sudo mv ~/radar_table.php /var/www/html
 
 # Show a setup completed message with a final colored link
-echo "Setup completed successfully
+echo "Setup completed successfully"
