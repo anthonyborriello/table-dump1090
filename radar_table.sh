@@ -16,10 +16,10 @@ if [ $(check_package_installed "lighttpd") -eq 0 ]; then
 fi
 
 # Check if PHP packages are installed
-if [ $(check_package_installed "php") -eq 0 ] || [ $(check_package_installed "php-fpm") -eq 0 ] || [ $(check_package_installed "php-cgi") -eq 0 ]; then
+if ! check_package_installed "php" || ! check_package_installed "php-fpm" || ! check_package_installed "php-cgi"; then
     echo "PHP packages are not installed. Installing PHP and the required packages..."
     sudo apt-get update
-    sudo apt-get install -y php php-fpm php-cgi
+    sudo apt install -y $(apt-cache policy php | grep Candidate | awk '{print $2}' | sed -E 's/^[0-9]+://;s/\+.*$//' | xargs -I{} echo php{} php{}-fpm php{}-cgi)
 fi
 
 # Enable the fastcgi-php module in Lighttpd
